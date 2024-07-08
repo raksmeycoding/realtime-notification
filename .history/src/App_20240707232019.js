@@ -35,7 +35,7 @@ function App() {
       {messages.map((message, index) => (
         <p key={index}>
           Request ID: {message?.requestId}, Status: {message?.status}, Data:
-          {message?.eventData}
+          {message?.eventData}, Message:{messages}
         </p>
       ))}
     </div>

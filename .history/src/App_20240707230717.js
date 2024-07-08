@@ -7,13 +7,12 @@ function App() {
 
   useEffect(() => {
     const newClient = new Client({
-      webSocketFactory: () => new SockJS("http://localhost:7080/websocket"),
+      webSocketFactory: () => new SockJS("http://localhost:8081/websocket"),
       onConnect: () => {
         console.log("Connected to WebSocket");
         newClient.subscribe("/topic/events", (message) => {
           console.log("Received message: ", message.body);
           const newMessage = JSON.parse(message.body);
-          console.log("Received message: ", newMessage);
           setMessages((prevMessages) => [...prevMessages, newMessage]);
         });
       },
@@ -34,8 +33,7 @@ function App() {
       <h2>Messages:</h2>
       {messages.map((message, index) => (
         <p key={index}>
-          Request ID: {message?.requestId}, Status: {message?.status}, Data:
-          {message?.eventData}
+          Request ID: {message.requestId}, Status: {message.status}
         </p>
       ))}
     </div>

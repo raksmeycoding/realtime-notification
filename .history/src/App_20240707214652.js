@@ -1,0 +1,14 @@
+import logo from "./logo.svg";
+import { Client } from "@stomp/stompjs";
+import SocketJs from "sockjs-client/dist/sockjs";
+import "./App.css";
+
+function App() {
+  return (
+    <div className="App">
+      <h1>App has been connect to socket...</h1>
+    </div>
+  );
+}
+
+export default App;

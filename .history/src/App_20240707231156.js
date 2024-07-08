@@ -13,8 +13,7 @@ function App() {
         newClient.subscribe("/topic/events", (message) => {
           console.log("Received message: ", message.body);
           const newMessage = JSON.parse(message.body);
-          console.log("Received message: ", newMessage);
-          setMessages((prevMessages) => [...prevMessages, newMessage]);
+          setMessages((prevMessages) => [...prevMessages, newMessage?.data]);
         });
       },
       onStompError: (frame) => {
@@ -34,8 +33,7 @@ function App() {
       <h2>Messages:</h2>
       {messages.map((message, index) => (
         <p key={index}>
-          Request ID: {message?.requestId}, Status: {message?.status}, Data:
-          {message?.eventData}
+          Request ID: {message.requestId}, Status: {message.status}
         </p>
       ))}
     </div>
